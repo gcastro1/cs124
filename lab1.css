@@ -6,7 +6,16 @@ body{
 
 input[type="checkbox"]{
     transform: scale(3.0);
+
 }
+
+input[type="checkbox"]:checked + label{
+    transform: scale(3.0);
+    text-decoration: line-through;
+
+}
+
+
 input[type="text"]{
     border-width: 0.5px;
     width: 200px;
@@ -28,6 +37,15 @@ input[type="text"]{
 
 }
 
+#confEdit{
+    font-size: 0.6em;
+    background-color: aquamarine;
+    width: 150px;
+    height: 35px;
+
+}
+
+
 #clear{
     font-size: 0.6em;
     background-color: aquamarine;
@@ -38,3 +56,4 @@ input[type="text"]{
 div.tasks{
     line-height:1.5;
 }
+

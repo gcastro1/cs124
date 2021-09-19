@@ -2,24 +2,29 @@
 <html>
 <head>
 	<title> "cs124 lab 1"</title>
-	<!--<link rel="stylesheet" href="lab1.css">-->
+	<link rel="stylesheet" href="lab1.css">
 </head>
 <body>
 	<h1>List of things to do</h1>
 	<form action="renameTextJohn.html">
 	<ul>
 		<input type = "checkbox", id="task1", name="task1", value="task1">
-        <label for="task1"> Buy new John Grisham book </label><br>
+        <label for="task1"> Buy new John Grisham book </label>
+		<input type="button" class="edit" value="edit"><br>
+
         <input type = "checkbox", id="task2", name="task2", value="task2">
-        <label for="task2"> Eat Lunch </label><br>
+        <label for="task2"> Eat Lunch </label>
+		<input type="button" class ="edit" value="edit"><br>
+
         <input type = "checkbox", id="task3", name="task3", value="task3">
         <label for="task3"> Call Mom</label><br>
         <input type = "text", id="editing", name="editing">
-	    <input type="submit" value="edit">
+	    <input type="submit", id="confEdit" value="confirm edit">
 	</ul>
 
-	New task:<br> <input type = "text", id = "newTask", name="newTask">
-	<input type="button" value="Create Task">
+		New task:<br> <input type = "text", id = "newTask", name="newTask">
+		<input type="button" id="create" value="Create Task"><br>
+		<input type="button" id="clear" value="Clear Completed Tasks">
 
 </form>
 
