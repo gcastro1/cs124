@@ -29,7 +29,7 @@ input[type="text"]{
     height: 35px;
 }
 
-#edit{
+.edit{
     font-size: 0.6em;
     background-color: aquamarine;
     width: 75px;
