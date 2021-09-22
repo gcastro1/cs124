@@ -52,7 +52,21 @@ input[type="text"]{
 #clear{
     font-size: 0.6em;
     background-color: aquamarine;
-    width: 260px;
+    width: 270px;
+    height: 40px;
+}
+
+#hide{
+    font-size: 0.6em;
+    background-color: skyblue;
+    width: 270px;
+    height: 40px;
+}
+
+#show{
+    font-size: 0.6em;
+    background-color: skyblue;
+    width: 270px;
     height: 40px;
 }
 
