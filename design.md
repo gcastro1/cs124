@@ -15,8 +15,13 @@
 
 
 * Final design & Flow:
-  * 
-  * Start page -->  
+  * Full functionality page:
+    ![Final design page](cs124 lab1 final design.png)
+  * Start page:
+    ![Final design page](cs124 lab1 start page design.png)
+  * From the start page, the first thing to add is "Buy new John Grisham book"
+  * After that it displays the list with the new task
+  
 
 
 * Challenges we faced 
