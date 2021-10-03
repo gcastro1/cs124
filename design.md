@@ -1,5 +1,8 @@
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a75daee89c3e4a5c081009f7af3a983468149aee
 * Our design decisions:
     * We decided to design a minimalist task list because we wanted it to be easy to use and view.
     * We also wanted to (somewhat) emulate a classic paper check list so we included checkboxes and strikethrough upon checking the task.
@@ -28,4 +31,8 @@
 * Parts of the design we're most proud of:
 
     * We were proud of the strikethrough on checked items. It was a pretty creative idea by Giovanni.
+<<<<<<< HEAD
     * We were also proud of the edit buttons we made to give the user a feeling of control over their tasks.
+=======
+    * We were also proud of the edit buttons we made to give the user a feeling of control over their tasks.
+>>>>>>> a75daee89c3e4a5c081009f7af3a983468149aee
