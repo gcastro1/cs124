@@ -1,18 +1,23 @@
 body{
     font-size: 250%;
     font-family: "Arial", sans-serif;
-    text-align: center;
+    text-align:  center;
+    
 }
+
+div.tasks{
+    line-height:1.5;
+}
+
 
 input[type="checkbox"]{
     transform: scale(3.0);
-
+    
 }
 
 input[type="checkbox"]:checked + label{
     transform: scale(3.0);
     text-decoration: line-through;
-
 }
 
 
@@ -21,6 +26,7 @@ input[type="text"]{
     width: 200px;
     height: 30px;
 }
+
 
 #create{
     font-size: 0.6em;
@@ -34,7 +40,6 @@ input[type="text"]{
     background-color: aquamarine;
     width: 75px;
     height: 35px;
-
 }
 
 #confEdit{
@@ -42,9 +47,7 @@ input[type="text"]{
     background-color: aquamarine;
     width: 150px;
     height: 35px;
-
 }
-
 
 #clear{
     font-size: 0.6em;
@@ -67,7 +70,7 @@ input[type="text"]{
     height: 40px;
 }
 
-div.tasks{
-    line-height:1.5;
-}
+
+
+
 
