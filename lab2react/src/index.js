@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import InMemoryApp from "./InMemoryApp";
+const initialData = [{id: 52, name:"call mom", completed:true},{id: 94, name:"buy book", completed:false}];
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <InMemoryApp initialData={initialData}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
