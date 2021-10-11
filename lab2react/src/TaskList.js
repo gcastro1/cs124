@@ -8,7 +8,7 @@ function TaskList(props){
     }
     else{
         const listTasks = props.data.map((t) =>
-            <Task id={t.id} name={t.name} completed={t.completed}/>);
+            <Task handleCheckChange={props.handleCheckChange} id={t.id} name={t.name} completed={t.completed}/>);
         return <div id={"TaskList"}>
             {listTasks}
         </div>

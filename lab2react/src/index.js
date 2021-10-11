@@ -4,7 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import InMemoryApp from "./InMemoryApp";
-const initialData = [{id: 52, name:"call mom", completed:true},{id: 94, name:"buy book", completed:false}];
+const initialData = [{id: 52, name:"call mom", completed:false},{id: 53, name:"eat Book", completed:false},
+                     {id: 54, name:"order lunch", completed:false}];
 
 ReactDOM.render(
   <React.StrictMode>

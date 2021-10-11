@@ -1,0 +1,7 @@
+.edit {
+    background-color: aquamarine;
+}
+
+input[type="checkbox"]:checked + label{
+    text-decoration: line-through;
+}
