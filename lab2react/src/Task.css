@@ -1,0 +1,16 @@
+body {
+    line-height: 1.5;
+}
+
+.comptrueshowfalse{
+    display: none;
+}
+
+.edit {
+    background-color: aquamarine;
+}
+
+input[type="checkbox"]:checked + label{
+    text-decoration: line-through;
+}
+
