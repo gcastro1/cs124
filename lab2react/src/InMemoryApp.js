@@ -1,10 +1,10 @@
 import App from './App.js';
 import {useState} from "react";
-import {Math} from "react";
 
 
 function InMemoryApp(props) {
     const [data,setData] = useState(props.initialData)
+    const [showCompletedTask, setShowCompletedTask]=useState(true);
 
     function idCount(){
         if(data.length==0){
@@ -14,6 +14,7 @@ function InMemoryApp(props) {
             return data[data.length-1].id + 1;
         }
     }
+
     function getCompleted(){
         let retArr = [];
         for (let i=0; i< data.length;i++){
@@ -34,10 +35,7 @@ function InMemoryApp(props) {
             const newTask = {id:idCount() , name:text, completed:false};
             setData([...data, newTask]);
         }
-
-
     }
-
 
     return <div>
         <App onItemDeleted={handleItemsDeleted} onItemAdded={(text)=>handleItemAdded(text)}
@@ -56,7 +54,9 @@ function InMemoryApp(props) {
                     name: editText
                 }
             }
-            else return task;}))}/>
+            else return task;}))}
+             showCompletedTask={showCompletedTask}
+             handleHideCompleted={()=>setShowCompletedTask(!showCompletedTask)}/>
     </div>
 }
 

@@ -6,13 +6,11 @@ import {useState} from "react";
 
 function Task(props){
     const edit = props.editState;
+    const show = props.show;
     const[editInput, setEditInput] = useState(props.name);
-    console.log([props.id,props.name,props.completed.toString()])
-    console.log(props.name + props.editState.toString()+edit)
-
 
     if(edit === 0){
-        return <div id={"id"+props.id}>
+        return <div id={"id"+props.id} className={"comp"+props.completed.toString()+"show"+show.toString()}>
             <input type="checkbox" id={"id"+props.id}
                    name={props.name}
                    value={props.name}
@@ -24,7 +22,7 @@ function Task(props){
         </div>
     }
     else if(edit === 1){
-        return <div id={"id"+props.id}>
+        return <div id={"id"+props.id} className={"comp"+props.completed.toString()+"show"+show.toString()}>
             <input type="checkbox" id={"id"+props.id}
                    name={props.name}
                    value={props.name}
@@ -34,18 +32,16 @@ function Task(props){
             <button type="button" id={"edc"+props.id} onClick={(e)=>props.handleConfEdit(e.target.id,editInput)}
                     className="edit"> confirm edit </button>
         </div>
-        /*add textbox and confirmEdit*/
     }
 
     else{
-        return <div id={"id"+props.id}>
+        return <div id={"id"+props.id} className={"comp"+props.completed.toString()+"show"+show.toString()}>
             <input type="checkbox" id={"id"+props.id}
                    name={props.name}
                    value={props.name}
                    onChange={(e)=>props.handleCheckChange(e.target.id,e.target.checked)}/>
             <label htmlFor={props.name}> {props.name} </label>
         </div>
-        /*remove edit button*/
     }
 
 }

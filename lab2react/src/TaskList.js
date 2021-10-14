@@ -5,7 +5,6 @@ import './TaskList.css';
 
 function TaskList(props){
     const[taskToBeEdit, setTaskToBeEdit] = useState(-1);
-    {console.log(taskToBeEdit+(taskToBeEdit !== -1).toString())}
 
     function handleConfEdit2(id,text){
         setTaskToBeEdit(-1);
@@ -15,8 +14,6 @@ function TaskList(props){
     if (props.data.length === 0){
         return <div> Nothing to do!</div>
     }
-
-
     else{
         if(taskToBeEdit !== -1){
             const listTasks = props.data.map((t) =>
@@ -24,21 +21,22 @@ function TaskList(props){
                 return <Task handleCheckChange={props.handleCheckChange}
                              handleConfEdit={handleConfEdit2}
                              id={t.id} name={t.name} completed={t.completed}
-                             editState={1}/>;
+                             editState={1} show={props.showCompletedTask}/>;
                 }
             else {
                 return <Task handleCheckChange={props.handleCheckChange} id={t.id} name={t.name} completed={t.completed}
-                             editState={2}/>;
+                             editState={2} show={props.showCompletedTask}/>;
                 }
             })
             return <div id={"TaskList"}> {listTasks} </div>
         }
+
         else{
             const listTasks = props.data.map((t) =>
                 <Task handleCheckChange={props.handleCheckChange}
                       handleEditClick={(taskID)=>setTaskToBeEdit(taskID)}
                       id={t.id} name={t.name} completed={t.completed}
-                      editState={0}/>);
+                      editState={0} show={props.showCompletedTask}/>);
             return <div id={"TaskList"}> {listTasks} </div>
         }
 

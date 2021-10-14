@@ -9,8 +9,9 @@ function App(props) {
     <div className="App">
       <h1>List of Things to Do</h1>
         <TaskList handleCheckChange={props.handleCheckChange} handleConfEdit={props.handleConfEdit}
-                  data={props.data}/>
-        <Bottom onItemDeleted={props.onItemDeleted} onItemAdded={props.onItemAdded}/>
+                  data={props.data} showCompletedTask={props.showCompletedTask}/> <br/>
+        <Bottom onItemDeleted={props.onItemDeleted} onItemAdded={props.onItemAdded}
+                handleHideCompleted={props.handleHideCompleted} showCompletedTask={props.showCompletedTask}/>
     </div>
   );
 }
