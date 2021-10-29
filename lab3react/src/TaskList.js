@@ -5,26 +5,29 @@ import './TaskList.css';
 
 function TaskList(props){
     const[taskToBeEdit, setTaskToBeEdit] = useState(-1);
+    console.log(taskToBeEdit);
 
-    function handleConfEdit2(id,text){
-        setTaskToBeEdit(-1);
-        props.handleConfEdit(id,text);
+    function handleConfEdit(id,text){
+            setTaskToBeEdit(-1);
+        if(text!==""){
+            props.handleTaskFieldChanged(id,"task",text);
+        }
     }
 
-    if (props.data.length === 0){
+    if (props.tasks.length === 0){
         return <div> Nothing to do!</div>
     }
     else{
         if(taskToBeEdit !== -1){
-            const listTasks = props.data.map((t) =>
+            const listTasks = props.tasks.map((t) =>
             {if (taskToBeEdit.includes(t.id)) {
-                return <Task handleCheckChange={props.handleCheckChange}
-                             handleConfEdit={handleConfEdit2}
-                             id={t.id} name={t.name} completed={t.completed}
-                             editState={1} show={props.showCompletedTask}/>;
+                return <Task handleTaskFieldChanged={props.handleTaskFieldChanged}
+                             id={t.id} task={t.task} completed={t.completed}
+                             editState={1} show={props.showCompletedTask}
+                            handleConfEdit={handleConfEdit}/>;
                 }
             else {
-                return <Task handleCheckChange={props.handleCheckChange} id={t.id} name={t.name} completed={t.completed}
+                return <Task handleTaskFieldChanged={props.handleTaskFieldChanged} id={t.id} name={t.name} completed={t.completed}
                              editState={2} show={props.showCompletedTask}/>;
                 }
             })
@@ -32,11 +35,11 @@ function TaskList(props){
         }
 
         else{
-            const listTasks = props.data.map((t) =>
-                <Task handleCheckChange={props.handleCheckChange}
+            const listTasks = props.tasks.map((t) =>
+                <Task handleTaskFieldChanged={props.handleTaskFieldChanged}
                       handleEditClick={(taskID)=>setTaskToBeEdit(taskID)}
-                      id={t.id} name={t.name} completed={t.completed}
-                      editState={0} show={props.showCompletedTask}/>);
+                      id={t.id} task={t.task} completed={t.completed}
+                      editState={0} show={props.showCompletedTask} toDelete={props.toDelete}/>);
             return <div id={"TaskList"}> {listTasks} </div>
         }
 

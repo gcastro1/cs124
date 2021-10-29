@@ -22,35 +22,22 @@ function InCloudApp(props) {
     const query = db.collection(collectionName);
     const [value, loading, error] = useCollection(query);
     const [showCompletedTask, setShowCompletedTask]=useState(true);
-    const [idCount,setIdCount] = useState(0);
+    const [toDelete, setToDelete]=useState(false);
 
     let tasks = [];
     if (value) {
-        {console.log("there's a value")}
         tasks = value.docs.map((doc) => {
             return {...doc.data()}});
     }
 
     console.log(tasks)
 
-
-
-    /*
-
-    function getCompleted(){
-        let retArr = [];
-        for (let i=0; i< data.length;i++){
-            if(data[i].completed){
-                retArr.push(data[i].id);
-            }
-        }
-        return retArr;
+    function handleTaskFieldChanged(taskId, field, value) {
+        db.collection(collectionName).doc(taskId).update(
+            {[field]:value}
+        );
+        console.log(tasks)
     }
-
-    function handleItemsDeleted(){
-        const itemIDArr = getCompleted();
-        setData(data.filter(item => !itemIDArr.includes(item.id)));
-    }*/
 
     function handleTaskAdded(text){
         const newId = generateUniqueID();
@@ -62,20 +49,33 @@ function InCloudApp(props) {
 
     }
 
+    function getCompleted(){
+        let retArr = [];
+        for (let i=0; i< tasks.length;i++){
+            if(tasks[i].completed){
+                retArr.push(tasks[i].id);
+            }
+        }
+        return retArr;
+    }
 
-
-
-
-
-
-    const testId =  String(1);
-
-
-
+    function handleTasksDeleted(){
+        const completedIDs =getCompleted();
+        setToDelete(true);
+        for(let i=0; i< completedIDs.length;i++){
+            db.collection(collectionName).doc(completedIDs[i]).delete();
+        }
+        setToDelete(false);
+    }
 
 
     return <div>
-        <App loading={loading} tasks={tasks} handleTaskAdded={handleTaskAdded}/>
+        <App loading={loading} tasks={tasks}
+             showCompletedTask={showCompletedTask}
+             handleHideCompleted={()=>setShowCompletedTask(!showCompletedTask)}
+             handleTaskAdded={handleTaskAdded}
+             handleTaskFieldChanged={handleTaskFieldChanged}
+        handleTasksDeleted={handleTasksDeleted} toDelete={toDelete}/>
     </div>
 }
 
@@ -85,13 +85,7 @@ export default InCloudApp;
 
 
 /*onItemDeleted={handleItemsDeleted} onItemAdded={(text)=>handleItemAdded(text)}
-             handleCheckChange={(id,check)=>setData([...data].map(task =>{
-            if(id.includes(task.id)) {
-                return {
-                    ...task,
-                    completed: check
-                }
-            }
+
             else return task;}))} data={data}
         handleConfEdit={(id,editText)=>setData([...data].map(task =>{
             if(id.includes(task.id)) {

@@ -3,10 +3,6 @@ import './App.css';
 import TaskList from './TaskList.js';
 import Bottom from './Bottom.js';
 
-
-
-
-
 function App(props) {
 
     if(props.tasks.length===0){
@@ -22,12 +18,22 @@ function App(props) {
             {props.loading && <h1>Loading</h1>}
             <h1>List of Things to Do</h1>
             <p>There's stuff to do!</p>
-            <Bottom onTaskAdded={props.onTaskAdded} showCompletedTask={true} handleTaskAdded={props.handleTaskAdded}/>
+            <TaskList handleTaskFieldChanged={props.handleTaskFieldChanged}
+                  tasks={props.tasks} showCompletedTask={props.showCompletedTask} toDelete={props.toDelete}/> <br/>
+            <Bottom onTaskAdded={props.onTaskAdded}
+                    showCompletedTask={props.showCompletedTask}
+                    handleTaskAdded={props.handleTaskAdded}
+                    handleHideCompleted={props.handleHideCompleted}
+                    handleTaskFieldChanged={props.handleTaskFieldChanged}
+                    handleTasksDeleted={props.handleTasksDeleted}/>
         </div>);
     }
 }
 
 export default App;
+
+/*handleConfEdit={props.handleConfEdit}*/
+
 /*handleTaskAdded={props.handleTaskAdded}*/
 
 /*<TaskList /*handleCheckChange={props.handleCheckChange} handleConfEdit={props.handleConfEdit}
