@@ -1,7 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import {useState} from "react";
 import TaskList from './TaskList.js';
 import Bottom from './Bottom.js';
+import {useDocument} from "react-firebase-hooks/firestore";
+
 
 function App(props) {
 
@@ -17,9 +20,19 @@ function App(props) {
         return(<div className="App">
             {props.loading && <h1>Loading</h1>}
             <h1>List of Things to Do</h1>
-            <p>There's stuff to do!</p>
+            <label htmlFor="sortWithSelect">Sort by:</label>
+            <select name="sortWithSelect" id="sortWithSelect" value={props.sortVal}
+                    onChange={(event)=>props.setSort(event.target.value)}>
+                <option value="default">default</option>
+                <option value="priorityAsc">ascending priority</option>
+                <option value="priorityDesc">descending priority</option>
+            </select>
             <TaskList handleTaskFieldChanged={props.handleTaskFieldChanged}
-                  tasks={props.tasks} showCompletedTask={props.showCompletedTask} toDelete={props.toDelete}/> <br/>
+                  tasks={props.tasks} showCompletedTask={props.showCompletedTask}
+                      setSort={props.setSort}
+                      sortPriority={props.sortPriority}
+                      sortDirection={props.sortDirection}
+                      toDelete={props.toDelete}/> <br/>
             <Bottom onTaskAdded={props.onTaskAdded}
                     showCompletedTask={props.showCompletedTask}
                     handleTaskAdded={props.handleTaskAdded}

@@ -19,10 +19,31 @@ const collectionName = "acowe-tasks"
 
 
 function InCloudApp(props) {
-    const query = db.collection(collectionName);
+    const [sortVal, setSortVal] = useState("default");
+    const [sortPriority, setSortPriority] = useState("place_order");
+    const [sortDirection, setSortDirection] = useState('asc');
+    const [orderNum, setOrderNum] = useState(0);
+    const query = db.collection(collectionName).orderBy(sortPriority,sortDirection)
     const [value, loading, error] = useCollection(query);
     const [showCompletedTask, setShowCompletedTask]=useState(true);
     const [toDelete, setToDelete]=useState(false);
+
+    function setSort(sortPref) {
+        setSortVal(sortPref);
+        if (sortPref === "priorityAsc"){
+            setSortPriority("priority");
+            setSortDirection("asc");
+        }
+        else if (sortPref === "priorityDesc"){
+            setSortPriority("priority");
+            setSortDirection("desc");
+        }
+        else{
+            setSortPriority("place_order");
+            setSortDirection("desc");
+        }
+
+    }
 
     let tasks = [];
     if (value) {
@@ -36,17 +57,18 @@ function InCloudApp(props) {
         db.collection(collectionName).doc(taskId).update(
             {[field]:value}
         );
-        console.log(tasks)
     }
 
-    function handleTaskAdded(text){
+    function handleTaskAdded(text, priorityNum){
         const newId = generateUniqueID();
+        setOrderNum(orderNum + 1);
         db.collection(collectionName).doc(newId).set({
             id: newId,
             task: text,
-            completed: false
+            completed: false,
+            priority: priorityNum,
+            place_order: orderNum
         })
-
     }
 
     function getCompleted(){
@@ -75,7 +97,10 @@ function InCloudApp(props) {
              handleHideCompleted={()=>setShowCompletedTask(!showCompletedTask)}
              handleTaskAdded={handleTaskAdded}
              handleTaskFieldChanged={handleTaskFieldChanged}
-        handleTasksDeleted={handleTasksDeleted} toDelete={toDelete}/>
+        handleTasksDeleted={handleTasksDeleted}
+             setSort={setSort}
+             sortVal={sortVal}
+             toDelete={toDelete}/>
     </div>
 }
 

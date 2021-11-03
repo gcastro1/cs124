@@ -4,13 +4,17 @@ import {useState} from "react";
 
 function Bottom(props){
     const[taskNameInput, setTaskNameInput] = useState("");
+    const[taskPriorityInput, setTaskPriorityInput] = useState("0");
+
+
 
     function onCreateClick(){
-        props.handleTaskAdded(taskNameInput);
+        props.handleTaskAdded(taskNameInput,taskPriorityInput);
         setTaskNameInput("");
+        setTaskPriorityInput("0");
     }
 
-    {console.log(props.showCompletedTask.toString())}
+
 
     if (props.showCompletedTask){
         return <div className="bottom">
@@ -18,6 +22,16 @@ function Bottom(props){
             <input  type = "text" id = "newTask" name="newTask"
                     onChange={(event)=>setTaskNameInput(event.target.value)}
                     value={taskNameInput}/>
+
+            <label htmlFor="priorityLvl">Priority:</label>
+
+            <select name="priorityLvl" id="priorityLvl"
+                    onChange={(event)=>setTaskPriorityInput(event.target.value)}>
+                <option value="0">None</option>
+                <option value="1">Low</option>
+                <option value="2">Medium</option>
+                <option value="3">High</option>
+            </select>
 
             <button type="button" id="create" onClick={(e)=> onCreateClick()}>
                 Create Task
