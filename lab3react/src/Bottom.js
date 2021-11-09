@@ -3,12 +3,18 @@ import './Bottom.css';
 import {useState} from "react";
 
 function Bottom(props){
-    const[taskNameInput, setTaskNameInput] = useState(null);
+    const[taskNameInput, setTaskNameInput] = useState("");
+    const[taskPriorityInput, setTaskPriorityInput] = useState("0");
+
+
 
     function onCreateClick(){
-        props.onItemAdded(taskNameInput);
+        props.handleTaskAdded(taskNameInput,taskPriorityInput);
         setTaskNameInput("");
+        setTaskPriorityInput("0");
     }
+
+
 
     if (props.showCompletedTask){
         return <div className="bottom">
@@ -17,7 +23,17 @@ function Bottom(props){
                     onChange={(event)=>setTaskNameInput(event.target.value)}
                     value={taskNameInput}/>
 
-            <button type="button" id="create" onClick={(e)=>onCreateClick()}>
+            <label htmlFor="priorityLvl">Priority:</label>
+
+            <select name="priorityLvl" id="priorityLvl"
+                    onChange={(event)=>setTaskPriorityInput(event.target.value)}>
+                <option value="0">None</option>
+                <option value="1">Low</option>
+                <option value="2">Medium</option>
+                <option value="3">High</option>
+            </select>
+
+            <button type="button" id="create" onClick={(e)=> onCreateClick()}>
                 Create Task
             </button> <br/>
 
@@ -25,7 +41,7 @@ function Bottom(props){
                 Hide Completed Tasks
             </button>
 
-            <button type="button" id="clear" onClick={(e) => props.onItemDeleted()} >
+            <button type="button" id="clear" onClick={(e) => props.handleTasksDeleted()} >
                 Clear Completed Tasks
             </button>
 
@@ -40,11 +56,12 @@ function Bottom(props){
             <button type="button" id="show" onClick={(e)=>props.handleHideCompleted()} >
                 Show Completed Tasks
             </button>
-            <button type="button" id="clear" onClick={(e) => props.onItemDeleted()} >
+            <button type="button" id="clear" onClick={(e) => props.handleTasksDeleted()} >
                 Clear Completed Tasks </button>
         </div>
     }
 
 }
+
 
 export default Bottom;
