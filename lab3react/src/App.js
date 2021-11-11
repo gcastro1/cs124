@@ -24,8 +24,8 @@ function App(props) {
             <select name="sortWithSelect" id="sortWithSelect" value={props.sortVal}
                     onChange={(event)=>props.setSort(event.target.value)}>
                 <option value="default">default</option>
-                <option value="priorityAsc">ascending priority</option>
-                <option value="priorityDesc">descending priority</option>
+                <option value="priorityAsc">Lowest to Highest priority</option>
+                <option value="priorityDesc">Highest to lowest priority</option>
             </select>
             <TaskList handleTaskFieldChanged={props.handleTaskFieldChanged}
                   tasks={props.tasks} showCompletedTask={props.showCompletedTask}
@@ -38,7 +38,8 @@ function App(props) {
                     handleTaskAdded={props.handleTaskAdded}
                     handleHideCompleted={props.handleHideCompleted}
                     handleTaskFieldChanged={props.handleTaskFieldChanged}
-                    handleTasksDeleted={props.handleTasksDeleted}/>
+                    handleTasksDeleted={props.handleTasksDeleted}
+                    maxMessage={props.maxMessage}/>
         </div>);
     }
 }

@@ -14,7 +14,6 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-
 const collectionName = "acowe-tasks"
 
 
@@ -27,6 +26,9 @@ function InCloudApp(props) {
     const [value, loading, error] = useCollection(query);
     const [showCompletedTask, setShowCompletedTask]=useState(true);
     const [toDelete, setToDelete]=useState(false);
+    const [maxMessage, setMaxMessage] = useState("");
+
+    /*database.collection(collectionName).doc(tasks.).collection('movies').get()*/
 
     function setSort(sortPref) {
         setSortVal(sortPref);
@@ -53,22 +55,39 @@ function InCloudApp(props) {
 
     console.log(tasks)
 
+    /*function handleTaskListAdded(nameText){
+        const newId = generateUniqueID();
+        db.collection(collectionName).doc(newId).set({
+            id: newId,
+            name: nameText
+        })
+    }*/
+
     function handleTaskFieldChanged(taskId, field, value) {
         db.collection(collectionName).doc(taskId).update(
             {[field]:value}
         );
     }
 
+
     function handleTaskAdded(text, priorityNum){
-        const newId = generateUniqueID();
-        setOrderNum(orderNum + 1);
-        db.collection(collectionName).doc(newId).set({
-            id: newId,
-            task: text,
-            completed: false,
-            priority: priorityNum,
-            place_order: orderNum
-        })
+        if(tasks.length < 10){
+            setMaxMessage("");
+            const newId = generateUniqueID();
+            setOrderNum(orderNum + 1);
+            db.collection(collectionName).doc(newId).set({
+                id: newId,
+                task: text,
+                completed: false,
+                priority: priorityNum,
+                place_order: orderNum,
+            })
+
+        }
+        else if (tasks.length = 10){
+            setMaxMessage("Max number of tasks reached! (You should" +
+                " take care of some of the stuff on the list first! :) )");
+        }
     }
 
     function getCompleted(){
@@ -100,7 +119,8 @@ function InCloudApp(props) {
         handleTasksDeleted={handleTasksDeleted}
              setSort={setSort}
              sortVal={sortVal}
-             toDelete={toDelete}/>
+             toDelete={toDelete}
+             maxMessage={maxMessage}/>
     </div>
 }
 

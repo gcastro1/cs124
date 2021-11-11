@@ -1,5 +1,18 @@
-body {
-    line-height: 1.5;
+.task {
+
+}
+
+.comptrueshowtrue {
+    /*display: grid;
+    border: 3px solid green;
+    padding: 5px;
+    grid-template-columns: 1fr 1fr 1fr;*/
+}
+.compfalseshowtrue{
+    /*display: grid;
+    border: 3px solid green;
+    padding: 5px;
+    grid-template-columns: 1fr 1fr 1fr;*/
 }
 
 .comptrueshowfalse{
@@ -7,10 +20,17 @@ body {
 }
 
 .edit {
+
     background-color: aquamarine;
+}
+
+input[type="checkbox"]{
 }
 
 input[type="checkbox"]:checked + label{
     text-decoration: line-through;
 }
 
+.taskLabel{
+
+}

@@ -1,5 +1,4 @@
 import App from "./App";
-import './Bottom.css';
 import {useState} from "react";
 
 function Bottom(props){
@@ -17,7 +16,7 @@ function Bottom(props){
 
 
     if (props.showCompletedTask){
-        return <div className="bottom">
+        return <div className="top">
             New task:<br/>
             <input  type = "text" id = "newTask" name="newTask"
                     onChange={(event)=>setTaskNameInput(event.target.value)}
@@ -35,22 +34,11 @@ function Bottom(props){
 
             <button type="button" id="create" onClick={(e)=> onCreateClick()}>
                 Create Task
-            </button> <br/>
-
-            <button type="button" id="hide" onClick={(e)=>props.handleHideCompleted()} >
-                Hide Completed Tasks
             </button>
-
-            <button type="button" id="clear" onClick={(e) => props.handleTasksDeleted()} >
-                Clear Completed Tasks
-            </button>
-
-            <p>{props.maxMessage}</p>
-
         </div>
     }
     else{
-        return <div className="bottom">
+        return <div className="top">
             New task:<br/>
             <input  type = "text" id = "newTask" name="newTask"
                     onChange={(event)=>setTaskNameInput(event.target.value)} value={taskNameInput}/>
@@ -67,11 +55,6 @@ function Bottom(props){
                 <option value="3">High</option>
             </select>
             <button type="button" id="create" onClick={(e)=>onCreateClick()}> Create Task </button> <br/>
-            <button type="button" id="show" onClick={(e)=>props.handleHideCompleted()} >
-                Show Completed Tasks
-            </button>
-            <button type="button" id="clear" onClick={(e) => props.handleTasksDeleted()} >
-                Clear Completed Tasks </button>
         </div>
     }
 

@@ -21,7 +21,8 @@ function TaskList(props){
         if(taskToBeEdit !== -1){
             const listTasks = props.tasks.map((t) =>
             {if (taskToBeEdit.includes(t.id)) {
-                return <Task handleTaskFieldChanged={props.handleTaskFieldChanged}
+                return <Task className="task"
+                            handleTaskFieldChanged={props.handleTaskFieldChanged}
                              id={t.id} task={t.task} completed={t.completed} priority={t.priority}
                              editState={1} show={props.showCompletedTask}
                             handleConfEdit={handleConfEdit}/>;

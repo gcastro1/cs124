@@ -25,13 +25,13 @@ function Task(props){
                    value={props.task}
                    checked={props.completed && !toDelete}
                    onChange={(e)=>props.handleTaskFieldChanged(e.target.id, "completed", e.target.checked)}/>
-            <label htmlFor={props.task}> {props.task} </label>
+            <label htmlFor={props.task} className="taskLabel"> {props.task} </label>
             <select name="priorityLvl" id="priorityLvl" value={props.priority}
                     onChange={(event)=>props.handleConfEdit2(props.id,event.target.value)}>
-                <option value="0">None</option>
-                <option value="1">Low</option>
-                <option value="2">Medium</option>
-                <option value="3">High</option>
+                <option value="0"></option>
+                <option value="1">!</option>
+                <option value="2">!!</option>
+                <option value="3">!!!</option>
             </select>
             <button type="button" id={"ed"+props.id}
                     onClick={(e)=>props.handleEditClick(e.target.id)} className="edit">
