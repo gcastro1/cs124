@@ -40,4 +40,5 @@
     * We were also proud of the edit buttons we made to give the user a feeling of control over their tasks.
 =======
     * We were also proud of the edit buttons we made to give the user a feeling of control over their tasks.
+    * We were proud of the addition of number of tasks so sighted and non-sighted alike can have a sense of how many tasks are on their list
 >>>>>>> a75daee89c3e4a5c081009f7af3a983468149aee
