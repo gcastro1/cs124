@@ -1,15 +1,39 @@
-#clear {
-    background-color: aquamarine;
+.showTaskfalse{
+    display: none;
 }
 
-#create {
-    background-color: aquamarine;
+.taskStuff_row1{
+    padding: 5px 5px;
 }
+
+.listStuff_row1{
+    padding: 5px 5px;
+}
+
+#clear {
+    background-color: #FEC6BA;
+}
+
+#createTask {
+    background-color: #C7FDFA;
+}
+
+#createList {
+    background-color: #85F3F1;
+}
+
 #hide {
-    background-color: skyblue;
+    background-color: #C6EBFF;
 }
 
 #show {
-    background-color: skyblue;
+    background-color: #C6EBFF;
 }
 
+#listDelete{
+    background-color: #FB9984;
+}
+
+.listAddDelete{
+    padding:15px 15px;
+}

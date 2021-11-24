@@ -1,4 +1,32 @@
-.App {
-  text-align: center;
+@media screen and (max-width: 766px) and  (max-height: 1023px){
+  .App {
+    display: revert;
+    transform: scale(1);
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 766px) and  (min-height: 1024px){
+  .App {
+    display: revert;
+    transform: scale(1);
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 767px) and (max-height: 1023px){
+  .App {
+    display: revert;
+    transform: scale(1.5) translateY(20%);
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 767px) and (min-height: 1024px) {
+  .App {
+    display: revert;
+    transform: scale(6) translateY(50%) translateX(22.5%);
+    text-align: center;
+  }
 }
 

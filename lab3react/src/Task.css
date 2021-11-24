@@ -3,34 +3,29 @@
 }
 
 .comptrueshowtrue {
-    /*display: grid;
-    border: 3px solid green;
     padding: 5px;
-    grid-template-columns: 1fr 1fr 1fr;*/
 }
 .compfalseshowtrue{
-    /*display: grid;
-    border: 3px solid green;
     padding: 5px;
-    grid-template-columns: 1fr 1fr 1fr;*/
 }
 
+.compfalseshowfalse{
+    padding: 5px;
+}
 .comptrueshowfalse{
     display: none;
 }
 
 .edit {
-
-    background-color: aquamarine;
+    background-color: #C7FDFA;
 }
 
 input[type="checkbox"]{
+    transform: scale(1.25);
+
 }
 
 input[type="checkbox"]:checked + label{
     text-decoration: line-through;
 }
 
-.taskLabel{
-
-}

@@ -1,64 +1,48 @@
 import App from "./App";
 import {useState} from "react";
-
-function Bottom(props){
-    const[taskNameInput, setTaskNameInput] = useState("");
-    const[taskPriorityInput, setTaskPriorityInput] = useState("0");
+import './Top.css';
 
 
+function Top(props) {
+    const[taskListInput, setTaskListInput] = useState(props.currentList);
+    const showSort = !(props.initial);
 
-    function onCreateClick(){
-        props.handleTaskAdded(taskNameInput,taskPriorityInput);
-        setTaskNameInput("");
-        setTaskPriorityInput("0");
+    console.log("showSort" + showSort.toString());
+
+    const selectList = props.taskLists.map((l) => {
+        return <option value={l.list_id}> {l.list_name}</option>
+    });
+
+    function onClickSelectList(listId){
+        props.handleTaskListSelect(listId);
+        setTaskListInput(listId);
+
     }
 
-
-
-    if (props.showCompletedTask){
-        return <div className="top">
-            New task:<br/>
-            <input  type = "text" id = "newTask" name="newTask"
-                    onChange={(event)=>setTaskNameInput(event.target.value)}
-                    value={taskNameInput}/>
-
-
-            <select name="priorityLvl" id="priorityLvl"
-                    onChange={(event)=>setTaskPriorityInput(event.target.value)}>
-                <option value="0">Select priority</option>
-                <option value="0">None</option>
-                <option value="1">Low</option>
-                <option value="2">Medium</option>
-                <option value="3">High</option>
+    return <div className="top">
+        <span className="listSelection"
+              aria-label="List Selection Menu">
+        <label htmlFor="listSelect"> List:</label>
+        <select name="listSelect"
+                id="listSelect" value={props.currentList}
+                aria-label = "List Selection Menu"
+                onChange={(event) => onClickSelectList(event.target.value)}>
+            <option value={"wow"}> Select list </option>
+            {selectList}
+        </select>
+        </span>
+        <br/>
+        <div className={"showSort" + showSort.toString()}>
+            <label htmlFor="sortWithSelect" aria-label = "Sort by Menu">Sort by:</label>
+            <select name="sortWithSelect" aria-label = "Sort by Menu" id="sortWithSelect" value={props.sortVal}
+                    onChange={(event)=>props.setSort(event.target.value)}>
+                <option value="default">default</option>
+                <option value="priorityAsc">Lowest to Highest priority</option>
+                <option value="priorityDesc">Highest to lowest priority</option>
             </select>
-
-            <button type="button" id="create" onClick={(e)=> onCreateClick()}>
-                Create Task
-            </button>
         </div>
-    }
-    else{
-        return <div className="top">
-            New task:<br/>
-            <input  type = "text" id = "newTask" name="newTask"
-                    onChange={(event)=>setTaskNameInput(event.target.value)} value={taskNameInput}/>
 
-            <select name="priorityLvl" id="priorityLvl"
-                    onChange={(event)=>setTaskPriorityInput(event.target.value)}>
-                <option value="0">Select priority</option>
-                <option value="1">Low</option>
-                <option value="2">Medium</option>
-                <option value="3">High</option>
-                <option value="0">None</option>
-                <option value="1">Low</option>
-                <option value="2">Medium</option>
-                <option value="3">High</option>
-            </select>
-            <button type="button" id="create" onClick={(e)=>onCreateClick()}> Create Task </button> <br/>
-        </div>
-    }
-
+    </div>
 }
 
-
-export default Bottom;
+export default Top;
