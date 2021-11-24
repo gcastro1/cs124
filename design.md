@@ -3,6 +3,8 @@
 
 =======
 >>>>>>> a75daee89c3e4a5c081009f7af3a983468149aee
+
+VoiceOver Demo Video: https://youtu.be/nocYTCVjTVI
 * Our design decisions:
     * We decided to design a minimalist task list because we wanted it to be easy to use and view.
     * We also wanted to (somewhat) emulate a classic paper check list so we included checkboxes and strikethrough upon checking the task.
